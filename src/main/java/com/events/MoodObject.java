@@ -37,6 +37,8 @@ public class MoodObject {
 
     public synchronized void addMoodListener(MoodListener l){
 
+        System.out.println("invoking new MoodListener" + l);
+
         _listener.add(l);
     }
 

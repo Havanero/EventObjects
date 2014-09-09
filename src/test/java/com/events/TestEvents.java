@@ -7,26 +7,40 @@ import org.junit.Test;
  */
 public class TestEvents {
 
-    MoodObject moodObject = new MoodObject();
-    MoodListener sky = new Sky();
-    MoodListener births = new Birds();
+   static MoodObject moodObject = new MoodObject();
+   static MoodListener sky = new Sky();
+   static MoodListener births = new Birds();
 
-    @Test
-    public void CheckSkyEvent(){
+    public static void main(String args[]){
 
         moodObject.addMoodListener(sky);
-
         moodObject.addMoodListener(births);
 
-        System.out.println("");
-        System.out.println("Lets Hug");
-        moodObject.ReceiveHug();
+        Thread thread = new Thread(
+         new Runnable() {
 
-        System.out.println("");
-        System.out.println("Make it Angry");
-        moodObject.receivePinch();
-        moodObject.receivePinch();
+            @Override
+            public void run() {
 
+                    while (true) {
+                        System.out.println("Running thread");
+                        System.out.println("");
+                        System.out.println("Lets Hug");
+                        moodObject.ReceiveHug();
+                        System.out.println("");
+                        System.out.println("Make it Angry");
+                        moodObject.receivePinch();
+                        moodObject.receivePinch();
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        thread.start();
 
 
 
