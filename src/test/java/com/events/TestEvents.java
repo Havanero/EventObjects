@@ -9,11 +9,14 @@ public class TestEvents {
 
     MoodObject moodObject = new MoodObject();
     MoodListener sky = new Sky();
+    MoodListener births = new Birds();
 
     @Test
     public void CheckSkyEvent(){
 
         moodObject.addMoodListener(sky);
+
+        moodObject.addMoodListener(births);
 
         System.out.println("");
         System.out.println("Lets Hug");
